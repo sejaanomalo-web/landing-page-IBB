@@ -353,13 +353,14 @@
 
   /* ── PILLS ── */
   #pillRed {
-    position: fixed; left: 5vw; top: 60vh;
+    position: fixed; right: 5vw; top: 60vh;
     max-width: 202px; z-index: 10;
-    background: rgba(18,4,4,0.80);
-    border: 1px solid rgba(180,40,40,0.20);
+    background: rgba(18,18,18,0.80);
+    border: 1px solid rgba(255,255,255,0.10);
     border-radius: 16px; padding: 18px 20px;
     backdrop-filter: blur(12px);
-    filter: brightness(0.74) saturate(0.58);
+    filter: brightness(0.72) saturate(0);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 20px 50px rgba(0,0,0,0.55);
     animation: floatR 5.2s ease-in-out infinite;
     transition: filter .28s ease, transform .28s ease;
     will-change: transform, filter;
@@ -370,12 +371,12 @@
     50%      { transform: translate3d(0,-5px,0) rotate(-1.2deg); }
   }
   #pillRed:hover {
-    filter: brightness(0.44) saturate(0.28) blur(2px) !important;
+    filter: brightness(0.44) saturate(0) blur(2px) !important;
     transform: translate3d(0,0,0) rotate(-1.2deg) scale(0.96) !important;
     cursor: not-allowed;
   }
   #pillBlue {
-    position: fixed; right: 5vw; top: 58vh;
+    position: fixed; left: 5vw; top: 58vh;
     max-width: 236px; z-index: 10;
     background: rgba(0,8,26,0.92);
     border: 1px solid rgba(18,183,106,0.48);
@@ -418,14 +419,14 @@
     letter-spacing: 3px; text-transform: uppercase;
     display: block; margin-bottom: 6px;
   }
-  .pill-red .pill-label { color: rgba(220,110,110,0.60); }
+  .pill-red .pill-label { color: rgba(200,200,200,0.55); }
   .pill-blue .pill-label { color: #12B76A; }
   .pill-title {
     font-family: 'Monument Extended', 'Barlow Condensed', sans-serif;
     font-weight: 800; font-size: 1.35rem;
     display: block;
   }
-  .pill-red .pill-title { color: rgba(235,170,170,0.68); }
+  .pill-red .pill-title { color: rgba(210,210,210,0.65); }
   .pill-blue .pill-title {
     color: #fff;
     font-size: 1.75rem;
@@ -435,12 +436,12 @@
     font-family: 'Inter', sans-serif; font-weight: 300;
     font-size: 0.70rem; display: block; margin-top: 4px;
   }
-  .pill-red .pill-sub { color: rgba(255,255,255,0.26); }
+  .pill-red .pill-sub { color: rgba(255,255,255,0.22); }
   .pill-blue .pill-sub { color: rgba(255,255,255,0.46); }
   .pill-note {
     font-family: 'Inter', sans-serif; font-weight: 300;
     font-size: 0.58rem; font-style: italic;
-    color: rgba(255,255,255,0.11);
+    color: rgba(255,255,255,0.09);
     display: block; margin-top: 8px;
   }
   /* ── CTA CENTER ── */
@@ -630,8 +631,8 @@
     .hl-main { font-size: clamp(3rem, 6vw, 4.4rem); }
     .flip-card { width: 70px; height: 86px; }
     .flip-num { font-size: 2.4rem; }
-    #pillRed { left: 2vw; }
-    #pillBlue { right: 2vw; }
+    #pillBlue { left: 2vw; }
+    #pillRed { right: 2vw; }
     #pillRed, #pillBlue { max-width: 190px; }
     #ctaCenter { max-width: 380px; }
     .cta-btn { font-size: 0.88rem; padding: 16px 32px; }
@@ -777,8 +778,8 @@
       max-width: calc(50% - 5px) !important;
       animation: none !important; transform: none !important;
     }
-    #pillBlue { order: 2 !important; opacity: 1 !important; }
-    #pillRed  { order: 1 !important; opacity: 0.52 !important; }
+    #pillBlue { order: 1 !important; opacity: 1 !important; }
+    #pillRed  { order: 2 !important; opacity: 0.52 !important; }
     .pill-blue, .pill-red {
       width: 100% !important; min-height: 150px !important;
       padding: 14px 12px !important; border-radius: 16px !important;
@@ -857,9 +858,10 @@
 <svg id="tensionSvg" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="tensionGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#c0392b" stop-opacity="0.6"/>
-      <stop offset="50%" stop-color="transparent" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#12B76A" stop-opacity="0.6"/>
+      <stop offset="0%"   stop-color="#12B76A" stop-opacity="0.85"/>
+      <stop offset="45%"  stop-color="white"   stop-opacity="0"/>
+      <stop offset="55%"  stop-color="white"   stop-opacity="0"/>
+      <stop offset="100%" stop-color="#888888"  stop-opacity="0.60"/>
     </linearGradient>
   </defs>
   <line id="tensionLine" x1="15vw" y1="68vh" x2="85vw" y2="68vh"
