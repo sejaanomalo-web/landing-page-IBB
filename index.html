@@ -702,16 +702,17 @@
     /* HEADLINE */
     #center > div:nth-child(2) { width: 100% !important; overflow: hidden !important; }
     .hl-main {
-      font-size: clamp(2.6rem, 13vw, 3.4rem) !important;
-      line-height: 0.92 !important; letter-spacing: -0.5px !important;
-      text-align: center !important; width: 100% !important;
       display: flex !important; flex-direction: column !important;
-      align-items: center !important; overflow: hidden !important;
-      white-space: normal !important; word-break: break-word !important;
+      align-items: center !important; width: 100% !important;
+      font-size: clamp(2.8rem, 13.8vw, 3.6rem) !important;
+      line-height: 0.92 !important; letter-spacing: -0.5px !important;
+      text-align: center !important; white-space: normal !important;
+      overflow: hidden !important;
     }
     .hl-main .w1, .hl-main .w2 {
       display: block !important; width: 100% !important;
-      text-align: center !important; word-break: break-word !important;
+      text-align: center !important; white-space: nowrap !important;
+      overflow: hidden !important;
     }
 
     /* TIMER */
@@ -773,7 +774,11 @@
       width: 100% !important; display: flex !important;
       align-items: flex-end !important; justify-content: center !important;
       overflow: hidden !important;
-      padding-bottom: max(8px, env(safe-area-inset-bottom)) !important;
+      padding-bottom: 28px !important;
+    }
+    #footer {
+      position: relative !important;
+      padding-bottom: max(10px, env(safe-area-inset-bottom)) !important;
     }
     #pillsRow {
       display: flex !important; flex-direction: row !important;
@@ -792,8 +797,8 @@
     #pillBlue { order: 1 !important; opacity: 1 !important; }
     #pillRed  { order: 2 !important; opacity: 0.52 !important; }
     .pill-blue, .pill-red {
-      width: 100% !important; min-height: 130px !important;
-      padding: 13px 11px !important; border-radius: 14px !important;
+      width: 100% !important; min-height: 110px !important;
+      padding: 12px 11px !important; border-radius: 14px !important;
       animation: none !important; transform: none !important;
       box-sizing: border-box !important; overflow: hidden !important;
       display: flex !important; flex-direction: column !important; gap: 4px !important;
@@ -815,6 +820,13 @@
     .modal-box { padding: 36px 28px; border-radius: 20px; }
     .modal-title { font-size: clamp(1.7rem, 7vw, 2.4rem); }
     #modalConfirm, #modalCancel { padding: 13px 16px; font-size: 0.78rem; letter-spacing: 1.5px; }
+  }
+
+  @media (max-width: 390px) {
+    .hl-main { font-size: clamp(2.4rem, 12.5vw, 3rem) !important; }
+  }
+  @media (max-width: 360px) {
+    .hl-main { font-size: clamp(2.1rem, 11.5vw, 2.6rem) !important; }
   }
 
   /* ── MOBILE PEQUENO (≤480px) ── */
