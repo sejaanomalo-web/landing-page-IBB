@@ -71,7 +71,15 @@
   }
 
   /* ── MOBILE BG IMAGE ── */
-  #bgMobile { display: none; }
+  #bgMobile {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 42%;
+    z-index: 0;
+    filter: contrast(1.15) saturate(1.10) brightness(0.55);
+    display: none; opacity: 0;
+    transition: opacity 0.6s ease;
+  }
 
   /* ── MOBILE BG VIDEO ── */
   #bgVideoMobile { display: none; }
@@ -753,24 +761,18 @@
     .cta-sub { text-align: center !important; font-size: 0.50rem !important; letter-spacing: 1px !important; }
 
     /* BG MOBILE */
-    #bgVideo  { display: none !important; }
-    #bgMobile { display: none !important; }
-    #bgVideoMobile {
-      display: block; position: fixed; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 50%;
-      z-index: 0; filter: contrast(1.15) saturate(1.10) brightness(0.55);
-    }
+    #bgVideo       { display: none !important; }
+    #bgVideoMobile { display: none !important; }
 
     /* OVERLAY — foto vertical */
     #overlayFog {
       background: linear-gradient(180deg,
-        rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.20) 30%,
-        rgba(8,8,8,0.22) 65%, rgba(8,8,8,0.94) 100%);
+        rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.18) 32%,
+        rgba(8,8,8,0.14) 58%, rgba(8,8,8,0.95) 100%) !important;
     }
     #overlayVignette {
-      background: radial-gradient(ellipse 85% 60% at 50% 52%,
-        transparent 0%, rgba(8,8,8,0.55) 100%);
+      background: radial-gradient(ellipse 90% 65% at 50% 54%,
+        transparent 0%, rgba(8,8,8,0.52) 100%) !important;
     }
 
     /* BOTTOM + PILLS */
@@ -888,7 +890,8 @@
 <video id="bgVideo" autoplay muted loop playsinline>
   <source src="video.mp4" type="video/mp4">
 </video>
-<img id="bgMobile" src="Sem%20T%C3%ADtulo-1.jpg" alt="">
+<img id="bgMobile" src="Sem%20T%C3%ADtulo-1.jpg" alt=""
+  style="display:none; opacity:0; transition:opacity 0.6s ease;">
 <video id="bgVideoMobile" autoplay muted loop playsinline>
   <source src="raio-mobile.mov" type="video/mp4">
 </video>
@@ -1292,6 +1295,18 @@ function updateClock() {
 
     // App revela
     app.classList.add('visible');
+
+    // Mobile: fade-in da imagem de fundo
+    if (isMobileIntro) {
+      const bgMobile = document.getElementById('bgMobile');
+      if (bgMobile) {
+        bgMobile.style.display = 'block';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => { bgMobile.style.opacity = '1'; });
+        });
+      }
+    }
+
     setTimeout(() => intro.remove(), 400);
 
     // Stagger de outros elementos
