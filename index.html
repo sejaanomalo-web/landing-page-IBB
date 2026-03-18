@@ -1480,8 +1480,11 @@ function closeModal() {
   modal.style.opacity       = '0';
   setTimeout(() => {
     modal.classList.remove('open', 'visible');
-    modalBox.style.transform = 'scale(0.85)';
-    modalBox.style.opacity   = '1';
+    modal.style.opacity    = '';
+    modal.style.transition = '';
+    modalBox.style.transform  = '';
+    modalBox.style.opacity    = '';
+    modalBox.style.transition = '';
   }, 310);
 }
 
