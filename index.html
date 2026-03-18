@@ -70,13 +70,13 @@
     box-shadow: 0 0 24px rgba(18,183,106,1), 0 0 48px rgba(18,183,106,0.70);
   }
 
-  /* ── MOBILE BG IMAGE ── */
+  /* ── MOBILE BG VIDEO ── */
   #bgMobile {
     position: fixed; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover; object-position: center 42%;
+    object-fit: cover; object-position: center 55%;
     z-index: 0;
-    filter: contrast(1.15) saturate(1.10) brightness(0.55);
+    filter: contrast(1.18) saturate(1.20) brightness(0.62);
     display: none; opacity: 0;
     transition: opacity 0.6s ease;
   }
@@ -813,6 +813,13 @@
       display: flex !important; flex-direction: column !important; gap: 3px !important;
     }
     .pill-blue:hover, .pill-red:hover { transform: none !important; filter: none !important; }
+    .pill-blue,
+    .pill-blue:hover,
+    .pill-blue:active,
+    .pill-blue:focus {
+      transform: none !important;
+      animation-play-state: running !important;
+    }
     .pill-label { font-size: 0.38rem !important; letter-spacing: 1.5px !important; margin-bottom: 2px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
     .pill-blue .pill-title, .pill-red .pill-title { font-size: 1.05rem !important; line-height: 1.0 !important; word-break: break-word !important; }
     .pill-blue .pill-sub, .pill-red .pill-sub { font-size: 0.55rem !important; line-height: 1.3 !important; }
@@ -890,8 +897,10 @@
 <video id="bgVideo" autoplay muted loop playsinline>
   <source src="video.mp4" type="video/mp4">
 </video>
-<img id="bgMobile" src="Sem%20T%C3%ADtulo-1.jpg" alt=""
+<video id="bgMobile" autoplay muted loop playsinline
   style="display:none; opacity:0; transition:opacity 0.6s ease;">
+  <source src="Gen-4%20Turbo%20cinematic%20slow%20motion%2C%20subtle%20hand%20movement%2C%20pills%20glowing%20softly%2C%20dramatic%20lighting%2C%20slight%20camera%20push%20in%2C%20depth%20of%20field%2C%20realistic%20shadows%201923496293.mp4" type="video/mp4">
+</video>
 <video id="bgVideoMobile" autoplay muted loop playsinline>
   <source src="raio-mobile.mov" type="video/mp4">
 </video>
@@ -1301,6 +1310,7 @@ function updateClock() {
       const bgMobile = document.getElementById('bgMobile');
       if (bgMobile) {
         bgMobile.style.display = 'block';
+        bgMobile.play().catch(() => {});
         requestAnimationFrame(() => {
           requestAnimationFrame(() => { bgMobile.style.opacity = '1'; });
         });
