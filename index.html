@@ -1457,58 +1457,10 @@ document.getElementById('ctaBtn').addEventListener('click', (e) => {
     setTimeout(() => p.remove(), dur + 50);
   }
 
-  // Step 2: modal after 600ms
+  // Step 2: redirect to WhatsApp after 600ms
   setTimeout(() => {
-    const modal = document.getElementById('confirmModal');
-    modal.classList.add('open');
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        modal.classList.add('visible');
-      });
-    });
+    window.open('https://chat.whatsapp.com/DuxPBEFGDf5DuJumjGEcDp?mode=gi_t', '_blank');
   }, 600);
-});
-
-// ── MODAL ACTIONS ──
-function closeModal() {
-  const modal   = document.getElementById('confirmModal');
-  const modalBox = document.getElementById('modalBox');
-  modalBox.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-  modalBox.style.transform  = 'scale(0.90)';
-  modalBox.style.opacity    = '0';
-  modal.style.transition    = 'opacity 0.3s ease';
-  modal.style.opacity       = '0';
-  setTimeout(() => {
-    modal.classList.remove('open', 'visible');
-    modal.style.opacity    = '';
-    modal.style.transition = '';
-    modalBox.style.transform  = '';
-    modalBox.style.opacity    = '';
-    modalBox.style.transition = '';
-  }, 310);
-}
-
-document.getElementById('modalCancel').addEventListener('click', closeModal);
-
-document.getElementById('confirmModal').addEventListener('click', (e) => {
-  if (e.target === document.getElementById('confirmModal')) closeModal();
-});
-
-document.getElementById('modalConfirm').addEventListener('click', () => {
-  closeModal();
-
-  // Welcome flash
-  const wf   = document.getElementById('welcomeFlash');
-  const wt   = document.getElementById('welcomeText');
-  wf.style.display = 'flex';
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      wt.style.opacity = '1';
-      setTimeout(() => { wt.style.opacity = '0'; }, 200);
-    });
-  });
-  setTimeout(() => { wf.style.display = 'none'; }, 900);
-  setTimeout(() => { window.open('https://chat.whatsapp.com/DuxPBEFGDf5DuJumjGEcDp?mode=gi_t', '_blank'); }, 250);
 });
 
 
