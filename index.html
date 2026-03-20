@@ -1213,7 +1213,7 @@ setInterval(() => {
 }, 40);
 
 // ── FLIP CLOCK ──
-const TARGET = Date.now() + (10 * 24 * 60 * 60 * 1000);
+const TARGET = new Date('2026-03-26T19:30:00-03:00').getTime();
 const prevVals = { days: -1, hours: -1, mins: -1, secs: -1 };
 
 function pad(n) { return String(n).padStart(2,'0'); }
